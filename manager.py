@@ -78,6 +78,9 @@ def docker_checker():
     this_container = client.containers.get(my_hostname)
     compose_project = this_container.labels['com.docker.compose.project']
 
+    cur = conn.cursor()
+    cur.execute("""SELECT citus_set_coordinator_host('master')""")
+
     # we only care about worker container health/destroy events from this cluster
     print("found compose project: %s" % compose_project, file=stderr)
     filters = {'event': list(actions),
