@@ -6,7 +6,7 @@ RUN apk add --no-cache \
         musl-dev \
         postgresql-dev \
         python3-dev && \
-    pip install docker==4.4.0 psycopg2==2.8.5 && \
+    pip install docker==4.4.0 psycopg2 && \
     apk add --no-cache libpq && \
     apk del psycodeps
 
